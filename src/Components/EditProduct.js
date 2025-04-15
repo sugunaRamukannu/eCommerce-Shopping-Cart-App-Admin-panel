@@ -50,7 +50,7 @@ export default function EditProduct() {
 
   return (
     <div className="container mt-5">
-      <h2 className="mb-4">Edit Product</h2>
+      <h1 className="mb-4 fw-bold">Edit Product</h1>
       <form>
         <div className="mb-3">
           <label className="form-label">Product Name</label>

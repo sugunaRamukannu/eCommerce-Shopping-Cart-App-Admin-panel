@@ -36,63 +36,67 @@ export default function Products() {
     }
   };
   return (
-    <div className="container mt-4">
-      <h2 className="mb-4">Product List</h2>
-      <button
-        className="btn btn-success mb-3"
-        onClick={() => navigate("/add-product")}
-      >
-        + Add Product
-      </button>
-      <div className="table-responsive">
-        <table className="table table-bordered table-hover">
-          <thead className="table-dark">
-            <tr>
-              <th>productId</th>
-              <th>productName</th>
-              <th>price</th>
-              <th>categoryId</th>
-              <th>categoryName</th>
-              <th>labels</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.length > 0 ? (
-              products.map((product) => (
-                <tr key={product.productId}>
-                  <td>{product.productId}</td>
-                  <td>{product.productName}</td>
-                  <td>${product.price}</td>
-                  <td>{product.categoryId}</td>
-                  <td>{product.categoryName}</td>
-                  <td>{product.labels}</td>
-                  <td>
-                    <button
-                      className="btn btn-sm btn-primary me-2"
-                      onClick={() => handleEdit(product.productId)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="btn btn-sm btn-danger"
-                      onClick={() => handleDelete(product.productId)}
-                    >
-                      Delete
-                    </button>
+    <section className="py-5">
+      <div className="container mt-4">
+        <div className="d-flex">
+          <button
+            className="col-2 btn btn-success mb-3 rounded-0"
+            onClick={() => navigate("/add-product")}
+          >
+          + Add Product
+          </button>
+          <h1 className="col-8 text-center fw-bold mb-4">Product List</h1>
+        </div>
+        <div className="table-responsive">
+          <table className="table table-bordered table-hover">
+            <thead className="table-dark">
+              <tr>
+                <th>productId</th>
+                <th>productName</th>
+                <th>price</th>
+                <th>categoryId</th>
+                <th>categoryName</th>
+                <th>labels</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.length > 0 ? (
+                products.map((product) => (
+                  <tr key={product.productId}>
+                    <td>{product.productId}</td>
+                    <td>{product.productName}</td>
+                    <td>${product.price}</td>
+                    <td>{product.categoryId}</td>
+                    <td>{product.categoryName}</td>
+                    <td>{product.labels}</td>
+                    <td>
+                      <button
+                        className="btn btn-sm btn-primary me-2 rounded-0"
+                        onClick={() => handleEdit(product.productId)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="btn btn-sm btn-danger rounded-0"
+                        onClick={() => handleDelete(product.productId)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="5" className="text-center">
+                    No products found.
                   </td>
                 </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="5" className="text-center">
-                  No products found.
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

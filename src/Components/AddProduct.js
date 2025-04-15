@@ -46,48 +46,48 @@ export default function AddProduct() {
       className="container d-flex justify-content-center align-items-center"
       style={{ minHeight: "100vh" }}
     >
-      <div className="card p-4 shadow" style={{ width: "500px" }}>
-        <h2 className="mb-4 text-center">Add New Product</h2>
+      <div className="card p-4 rounded-0" style={{ width: "500px" }}>
+        <h1 className="mb-4 text-center fw-bold">Add New Product</h1>
         <form>
           <div className="mb-3 row">
             <label className="col-sm-4 col-form-label">Product Name</label>
             <div className="col-sm-8">
-              <input type="text" className="form-control" ref={productName} />
+              <input type="text" className="form-control rounded-0" ref={productName} />
             </div>
           </div>
 
           <div className="mb-3 row">
             <label className="col-sm-4 col-form-label">Category Name</label>
             <div className="col-sm-8">
-              <input type="text" className="form-control" ref={categoryName} />
+              <input type="text" className="form-control rounded-0" ref={categoryName} />
             </div>
           </div>
 
           <div className="mb-3 row">
             <label className="col-sm-4 col-form-label">Category ID</label>
             <div className="col-sm-8">
-              <input type="number" className="form-control" ref={categoryId} />
+              <input type="number" className="form-control rounded-0" ref={categoryId} />
             </div>
           </div>
 
           <div className="mb-3 row">
             <label className="col-sm-4 col-form-label">Price</label>
             <div className="col-sm-8">
-              <input type="number" className="form-control" ref={price} />
+              <input type="number" className="form-control rounded-0" ref={price} />
             </div>
           </div>
 
           <div className="mb-4 row">
             <label className="col-sm-4 col-form-label">Label</label>
             <div className="col-sm-8">
-              <input type="text" className="form-control" ref={labels} />
+              <input type="text" className="form-control rounded-0" ref={labels} />
             </div>
           </div>
 
           <div className="text-center">
             <button
               type="submit"
-              className="btn btn-primary w-50"
+              className="btn btn-primary w-50 rounded-0"
               onClick={handleCreateClick}
             >
               Create Product
