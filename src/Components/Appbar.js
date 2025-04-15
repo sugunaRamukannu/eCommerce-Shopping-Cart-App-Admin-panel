@@ -77,7 +77,7 @@ export default function AdminNavbar() {
 								<Link className="nav-link text-primary" to="#" role="button" data-bs-toggle="dropdown"
 									aria-expanded="false">
 									{/* Profile Picture Added Based on Last Digit in Phone Number */}
-									<img className="profile rounded-circle d-lg-block mx-auto" width="80" height="80"
+									<img className="profile rounded-circle d-lg-block mx-auto" width="50" height="50"
 										src="#"
 										alt="Profile" />
 								</Link>
