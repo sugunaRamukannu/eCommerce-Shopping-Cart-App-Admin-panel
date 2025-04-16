@@ -5,3 +5,9 @@
 .active-link > span {
   color: #a2e436;
 }
+
+.profile {
+	border-radius: 50%;
+	border: 5px solid #a2e436;
+	background-color: white;
+}
