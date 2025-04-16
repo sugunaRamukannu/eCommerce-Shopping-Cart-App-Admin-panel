@@ -54,27 +54,27 @@ export default function EditProduct() {
       <form>
         <div className="mb-3">
           <label className="form-label">Product Name</label>
-          <input type="text" className="form-control" ref={productName} />
+          <input type="text" className="form-control rounded-0" ref={productName} />
         </div>
         <div className="mb-3">
           <label className="form-label">Category Name</label>
-          <input type="text" className="form-control" ref={categoryName} />
+          <input type="text" className="form-control rounded-0" ref={categoryName} />
         </div>
         <div className="mb-3">
           <label className="form-label">Category ID</label>
-          <input type="number" className="form-control" ref={categoryId} />
+          <input type="number" className="form-control rounded-0" ref={categoryId} />
         </div>
         <div className="mb-3">
           <label className="form-label">Price</label>
-          <input type="number" className="form-control" ref={price} />
+          <input type="number" className="form-control rounded-0" ref={price} />
         </div>
         <div className="mb-3">
           <label className="form-label">Label</label>
-          <input type="text" className="form-control" ref={label} />
+          <input type="text" className="form-control rounded-0" ref={label} />
         </div>
         <button
           type="submit"
-          className="btn btn-primary"
+          className="btn btn-primary rounded-0"
           onClick={handleUpdate}
         >
           Update Product

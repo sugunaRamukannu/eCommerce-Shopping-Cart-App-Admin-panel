@@ -66,7 +66,7 @@ export default function Products() {
                   <tr key={product.productId}>
                     <td>{product.productId}</td>
                     <td>{product.productName}</td>
-                    <td>${product.price}</td>
+                    <td>${product.price.toFixed(2)}</td>
                     <td>{product.categoryId}</td>
                     <td>{product.categoryName}</td>
                     <td>{product.labels}</td>
