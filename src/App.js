@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <AdminNavbar />
+        <AdminNavbar role={role} />
         <Routes>
           <Route path="/admin" element={<Products />} />
           {/* <Route path="/products" element={<Products />} /> */}
