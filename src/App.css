@@ -4,11 +4,6 @@ body {
 	min-height: 100vh;
 }
 
-/* .product-dashboard {
-	width: 70%;
-	margin: auto;
-} */
-
 .product-dashboard > img {
 	width: 90%;
 }
