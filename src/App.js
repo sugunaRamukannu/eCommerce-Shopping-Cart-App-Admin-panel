@@ -32,7 +32,7 @@ function App() {
       <BrowserRouter>
         <AdminNavbar role={role} />
         <Routes>
-        <Route path="/" exact element={<Home /> } />
+          <Route path="/" exact element={<Home /> } />
           <Route path="/admin" element={<Products />} />
           {/* <Route path="/products" element={<Products />} /> */}
 
