@@ -53,7 +53,7 @@ export default function Products() {
           >
             Add Product
           </button>
-          <h1 className="flex-grow-1 text-center m-0">Product List</h1>
+          <h1 className="fw-bold flex-grow-1 text-center m-0">Product List</h1>
           <div style={{ width: "95px" }}></div>
         </div>
 

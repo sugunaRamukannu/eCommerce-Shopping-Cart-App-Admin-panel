@@ -71,7 +71,7 @@ export default function EditProduct() {
       setFormErrors(errors => ({
         ...errors,
         //targeting the label which is the previous sibling of input
-        [input.name]: `Please enter ${input.previousSibling.innerText.toLowerCase()}`,
+        [input.name]: `Please enter the ${input.previousSibling.innerText.toLowerCase()}`,
       }));
     } else {
       setFormErrors(errors => ({...errors,
@@ -89,6 +89,12 @@ export default function EditProduct() {
 
   const handleUpdate = (e) => {
     e.preventDefault();
+
+    let formErrorsCount = 0;
+    for (const key in formErrors) {
+      if (formErrors[key]) formErrorsCount++;
+    }
+    if (formErrorsCount > 0) return alert("Please fill up all mandatory form fields before submission.");
 
     const updatedData = {
       productName,
@@ -174,6 +180,7 @@ export default function EditProduct() {
             />
             {formErrors.price && <span className="text-danger d-inline-block mt-2">{formErrors.price}</span>}
           </div>
+
           <div className="mb-3">
             <label className="form-label">Label</label>
             <input
