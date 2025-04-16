@@ -108,7 +108,7 @@ export default function Products() {
         {/* //pagination */}
         <div className="d-flex justify-content-center mt-3">
           <button
-            className="btn btn-outline-primary me-2 rounded-0"
+            className="btn btn-outline-dark me-2 rounded-0"
             disabled={page === 0}
             onClick={() => setPage((prev) => Math.max(prev - 1, 0))}
           >
@@ -120,7 +120,7 @@ export default function Products() {
           </span>
 
           <button
-            className="btn btn-outline-primary ms-2 rounded-0"
+            className="btn btn-outline-dark ms-2 rounded-0"
             disabled={page >= totalPages - 1}
             onClick={() => setPage((prev) => Math.min(prev + 1, totalPages - 1))}
           >

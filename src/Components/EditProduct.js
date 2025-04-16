@@ -121,7 +121,7 @@ export default function EditProduct() {
     <section className="py-5">
       <div className="container mt-5">
         <h1 className="mb-4 fw-bold">Edit Product</h1>
-        <div className="border border-black p-5">
+        <div className="border border-black bg-white p-5">
         <form onSubmit={handleUpdate}>
           <div className="mb-3">
             <label className="form-label">Product Name</label>
