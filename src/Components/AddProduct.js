@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -11,10 +11,14 @@ export default function AddProduct() {
   };
 
   const navigate = useNavigate();
-  const productName = useRef();
-  const labels = useRef();
-  const price = useRef();
-  const productCategory = useRef();
+  // const productName = useRef();
+  // const labels = useRef();
+  // const price = useRef();
+  // const productCategory = useRef();
+
+  const [productName, setProductName] = useState("");
+  const [labels, setLabels] = useState("");
+  const [price, setPrice] = useState("");
 
   const [categories, setCategories] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
@@ -38,6 +42,29 @@ export default function AddProduct() {
       });
   }, []);
 
+  const handleInputChange = (e) => {
+    //error validation
+    const input = e.target;
+    if (input.value.length === 0) {
+      setFormErrors(errors => ({
+        ...errors,
+        //targeting the label which is the previous sibling of input
+        [input.name]: `Please enter the ${input.previousSibling.innerText.toLowerCase()}`,
+      }));
+    } else {
+      setFormErrors(errors => ({...errors,
+        //clear the respective error if there is an input
+        [input.name]: "",
+      }));
+    }
+
+    //update input accordingly
+    // setFormData((prevFormData) => ({
+    //   ...prevFormData,
+    //   [input.name]: input.value,
+    // }));
+  };
+
   function handleCreateClick(e) {
     e.preventDefault();
 
@@ -46,15 +73,21 @@ export default function AddProduct() {
     );
 
     console.log("bsj" + selectedCategory.categoryId);
+    // const data = {
+    //   productName: productName.current.value,
+    //   labels: labels.current.value,
+    //   price: price.current.value,
+    //   categoryId: selectedCategory.categoryId,
+    //   categoryName: selectedCategory.categoryName,
+    // };
     const data = {
-      productName: productName.current.value,
-      labels: labels.current.value,
-      price: price.current.value,
+      productName,
+      labels,
+      price,
       categoryId: selectedCategory.categoryId,
       categoryName: selectedCategory.categoryName,
     };
-
-    console.log(productCategory.categoryId);
+    // console.log(productCategory.categoryId);
 
     axios
       .post("http://localhost:8080/api/products", data)
@@ -70,31 +103,36 @@ export default function AddProduct() {
 
   return (
     <section className="py-5">
-      <div
-      className="container d-flex justify-content-center align-items-center"
-      style={{ minHeight: "100vh" }}
-    >
-      <div className="card p-4 shadow" style={{ width: "500px" }}>
-        <h1 className="mb-4 text-center">Add New Product</h1>
+      <div className="container mt-5">
+        <h1 className="mb-4 fw-bold">Add New Product</h1>
+        <div className="border border-black p-5">
         <form>
-          <div className="mb-3 row">
-            <label className="col-sm-4 col-form-label">Product Name</label>
-            <div className="col-sm-8">
-              <input type="text"
+          <div className="mb-3">
+            <label className="form-label">Product Name</label>
+              <input
+                type="text"
                 className="form-control rounded-0"
                 name="productName"
-                ref={productName} />
-            </div>
+                onChange={(e) =>{
+                  handleInputChange(e);
+                  setProductName(e.target.value);
+                }}
+                required
+              />
+               {formErrors.productName && <span className="text-danger d-inline-block mt-2">{formErrors.productName}</span>}
           </div>
 
-          <div className="mb-3 row">
-            <label className="col-sm-4 col-form-label">Category</label>
-            <div className="col-sm-8">
+          <div className="mb-3">
+            <label className="form-label">Category</label>
               <select
                 className="form-control rounded-0"
                 name="selectedCategoryId"
                 value={selectedCategoryId}
-                onChange={(e) => setSelectedCategoryId(e.target.value)}
+                onChange={(e) =>{
+                  handleInputChange(e);
+                  setSelectedCategoryId(e.target.value);
+                }}
+                required
               >
                 {categories.map((cat) => (
                   <option key={cat.categoryId} value={cat.categoryId}>
@@ -102,41 +140,47 @@ export default function AddProduct() {
                   </option>
                 ))}
               </select>
-            </div>
+              {formErrors.selectedCategoryId && <span className="text-danger d-inline-block mt-2">{formErrors.selectedCategoryId}</span>}
           </div>
 
-          <div className="mb-3 row">
-            <label className="col-sm-4 col-form-label">Price</label>
-            <div className="col-sm-8">
-              <input type="number"
+          <div className="mb-3">
+            <label className="form-label">Price</label>
+              <input
+                type="number"
                 className="form-control rounded-0"
                 name="price"
-                ref={price} />
-            </div>
+                onChange={(e) =>{
+                  handleInputChange(e);
+                  setPrice(e.target.value);
+                }}
+                required
+              />
+              {formErrors.price && <span className="text-danger d-inline-block mt-2">{formErrors.price}</span>}
           </div>
 
-          <div className="mb-4 row">
-            <label className="col-sm-4 col-form-label">Label</label>
-            <div className="col-sm-8">
-              <input type="text"
+          <div className="mb-3">
+            <label className="form-label">Label</label>
+              <input
+                type="text"
                 className="form-control rounded-0"
                 name="labels"
-                ref={labels} />
-            </div>
+                onChange={(e) =>{
+                  handleInputChange(e);
+                  setLabels(e.target.value);
+                }}
+              />
           </div>
 
-          <div className="text-center">
             <button
               type="submit"
-              className="btn btn-primary w-50 rounded-0"
+              className="btn btn-primary rounded-0"
               onClick={handleCreateClick}
             >
               Create Product
             </button>
-          </div>
         </form>
+        </div>
       </div>
-    </div>
     </section>
   );
 }
