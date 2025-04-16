@@ -3,6 +3,7 @@ import AdminNavbar from "./Components/Appbar";
 import Products from "./Components/Product";
 import AddProduct from "./Components/AddProduct";
 import EditProduct from "./Components/EditProduct";
+import Home from "./Components/Home";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -31,6 +32,7 @@ function App() {
       <BrowserRouter>
         <AdminNavbar role={role} />
         <Routes>
+        <Route path="/" exact element={<Home /> } />
           <Route path="/admin" element={<Products />} />
           {/* <Route path="/products" element={<Products />} /> */}
 
