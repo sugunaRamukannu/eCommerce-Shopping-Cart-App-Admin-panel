@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+//Author(s): Ramukannu Suguna
 function LogoutButton() {
   const navigate = useNavigate();
 
