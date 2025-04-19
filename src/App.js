@@ -7,7 +7,9 @@ import Home from "./Components/Home";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+
 import AccessDenied from "./Components/AccessDenied";
+
 
 function App() {
   const [role, setRole] = useState("");
@@ -18,13 +20,16 @@ function App() {
       .get("http://localhost:8080/api/auth/role", { withCredentials: true })
       .then((res) => {
         const plainRole = res.data.replace("ROLE_", "");
+
         setRole(plainRole);
       })
       .catch(() => {
         setRole("");
+
       })
       .finally(() => setLoading(false));
   }, []);
+
 
   const handleLogout = () => {
     axios
@@ -42,16 +47,19 @@ function App() {
       .catch((err) => console.error("Logout failed:", err));
   };
 
+
   if (loading) return <div>Loading...</div>;
 
   return (
     <div className="App">
       <BrowserRouter>
+
         <AdminNavbar role={role} onLogout={handleLogout} />
         <Routes>
           <Route path="/" exact element={<Home role={role} />} />
           <Route path="/admin" element={<Products role={role} />} />
           <Route path="/access-denied" element={<AccessDenied />} />
+
           {/* <Route path="/products" element={<Products />} /> */}
 
           {/* Admin-only routes */}

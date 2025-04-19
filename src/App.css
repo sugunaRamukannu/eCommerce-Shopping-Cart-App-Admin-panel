@@ -1,4 +1,5 @@
 body {
+
   background: linear-gradient(170deg, #a2e436, #a2e436 50%, #fff 50%, #fff 85%, #a2e436 85%);
 background-repeat: no-repeat;
 }
@@ -19,4 +20,5 @@ color: #a2e436;
 border-radius: 50%;
 border: 5px solid #a2e436;
 background-color: white;
+
 }

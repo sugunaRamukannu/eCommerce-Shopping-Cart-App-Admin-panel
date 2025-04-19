@@ -31,12 +31,16 @@ export default function EditProduct() {
   useEffect(() => {
     // Fetch categories using axios
     axios
+
       .get("http://localhost:8080/api/categories") 
+
       .then((res) => {
         console.log("Fetched categories:", res.data);
         setCategories(res.data);
         if (res.data.length > 0) {
+
           setSelectedCategoryId(res.data[0].categoryId); 
+
         }
         setLoading(false);
       })
@@ -68,14 +72,18 @@ export default function EditProduct() {
     //error validation
     const input = e.target;
     if (input.value.length === 0) {
+
       setFormErrors((errors) => ({
+
         ...errors,
         //targeting the label which is the previous sibling of input
         [input.name]: `Please enter the ${input.previousSibling.innerText.toLowerCase()}`,
       }));
     } else {
+
       setFormErrors((errors) => ({
         ...errors,
+
         //clear the respective error if there is an input
         [input.name]: "",
       }));
@@ -95,10 +103,9 @@ export default function EditProduct() {
     for (const key in formErrors) {
       if (formErrors[key]) formErrorsCount++;
     }
-    if (formErrorsCount > 0)
-      return alert(
-        "Please fill up all mandatory form fields before submission."
-      );
+
+    if (formErrorsCount > 0) return alert("Please fill up all mandatory form fields before submission.");
+
 
     const updatedData = {
       productName,
@@ -126,6 +133,7 @@ export default function EditProduct() {
       <div className="container mt-5">
         <h1 className="mb-4 fw-bold">Edit Product</h1>
         <div className="border border-black bg-white p-5">
+
           <form onSubmit={handleUpdate}>
             <div className="mb-3">
               <label className="form-label">Product Name</label>
@@ -215,6 +223,7 @@ export default function EditProduct() {
               Update Product
             </button>
           </form>
+
         </div>
       </div>
     </section>

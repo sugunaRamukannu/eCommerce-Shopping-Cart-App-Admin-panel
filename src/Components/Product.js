@@ -45,11 +45,13 @@ export default function Products({role}) {
     }
   };
 
+
   if (role !== "ADMIN") {
     // return <Navigate to="/login" replace />;
     return <AccessDenied />;
     // window.location.href = "http://localhost:8080/";
   }
+
   return (
     <section className="py-5">
       <div className="container mt-4">
