@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AccessDenied from "./AccessDenied";
 
+//Author(s): Ramukannu Suguna
 export default function Products({role}) {
 
   const [products, setProducts] = useState([]);
@@ -47,9 +48,7 @@ export default function Products({role}) {
 
 
   if (role !== "ADMIN") {
-    // return <Navigate to="/login" replace />;
     return <AccessDenied />;
-    // window.location.href = "http://localhost:8080/";
   }
 
   return (

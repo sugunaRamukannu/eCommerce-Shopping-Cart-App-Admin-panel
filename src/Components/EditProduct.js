@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
+//Author(s): Ramukannu Suguna, Lee Yi Cheng, Melvin
 export default function EditProduct() {
   const errorsOutput = {
     productName: "",
@@ -12,13 +13,9 @@ export default function EditProduct() {
   const { productId } = useParams();
   const navigate = useNavigate();
 
-  // const productName = useRef();
-  // const labels = useRef();
-  // const price = useRef();
   const [productName, setProductName] = useState("");
   const [labels, setLabels] = useState("");
   const [price, setPrice] = useState("");
-  // const [categoryName, setCategoryName] = useState("");
 
   const [categories, setCategories] = useState([]); // Categories state
   const [selectedCategoryId, setSelectedCategoryId] = useState(""); // Selected category ID
@@ -88,12 +85,6 @@ export default function EditProduct() {
         [input.name]: "",
       }));
     }
-
-    //update input accordingly
-    // setFormData((prevFormData) => ({
-    //   ...prevFormData,
-    //   [input.name]: input.value,
-    // }));
   };
 
   const handleUpdate = (e) => {
@@ -146,6 +137,7 @@ export default function EditProduct() {
                   handleInputChange(e);
                   setProductName(e.target.value);
                 }}
+                placeholder="Enter Product Name"
                 required
               />
               {formErrors.productName && (
@@ -165,6 +157,7 @@ export default function EditProduct() {
                   handleInputChange(e);
                   setSelectedCategoryId(e.target.value);
                 }}
+                placeholder="Enter Category"
                 required
               >
                 <option value=""></option>
@@ -196,6 +189,7 @@ export default function EditProduct() {
                   handleInputChange(e);
                   setPrice(e.target.value);
                 }}
+                placeholder="Enter Price"
                 required
               />
               {formErrors.price && (
@@ -216,6 +210,7 @@ export default function EditProduct() {
                   handleInputChange(e);
                   setLabels(e.target.value);
                 }}
+                placeholder="Enter Labels"
               />
             </div>
 

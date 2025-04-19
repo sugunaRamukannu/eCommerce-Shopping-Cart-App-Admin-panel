@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+//Author(s): Ramukannu Suguna, Lee Yi Cheng, Melvin
 export default function AddProduct() {
   const errorsOutput = {
     productName: "",
@@ -11,10 +12,6 @@ export default function AddProduct() {
   };
 
   const navigate = useNavigate();
-  // const productName = useRef();
-  // const labels = useRef();
-  // const price = useRef();
-  // const productCategory = useRef();
 
   const [productName, setProductName] = useState("");
   const [labels, setLabels] = useState("");
@@ -60,12 +57,6 @@ export default function AddProduct() {
         [input.name]: "",
       }));
     }
-
-    //update input accordingly
-    // setFormData((prevFormData) => ({
-    //   ...prevFormData,
-    //   [input.name]: input.value,
-    // }));
   };
 
   function handleCreateClick(e) {
@@ -75,14 +66,6 @@ export default function AddProduct() {
       (cat) => cat.categoryId.toString() === selectedCategoryId.toString()
     );
 
-    console.log("bsj" + selectedCategory.categoryId);
-    // const data = {
-    //   productName: productName.current.value,
-    //   labels: labels.current.value,
-    //   price: price.current.value,
-    //   categoryId: selectedCategory.categoryId,
-    //   categoryName: selectedCategory.categoryName,
-    // };
     const data = {
       productName,
       labels,
@@ -90,7 +73,6 @@ export default function AddProduct() {
       categoryId: selectedCategory.categoryId,
       categoryName: selectedCategory.categoryName,
     };
-    // console.log(productCategory.categoryId);
 
     axios
       .post("http://localhost:8080/api/products", data)
@@ -118,12 +100,12 @@ export default function AddProduct() {
                 type="text"
                 className="form-control rounded-0"
                 name="productName"
-
                 onChange={(e) =>{
 
                   handleInputChange(e);
                   setProductName(e.target.value);
                 }}
+                placeholder="Enter Product Name"
                 required
               />
 
@@ -137,12 +119,12 @@ export default function AddProduct() {
                 className="form-control rounded-0"
                 name="selectedCategoryId"
                 value={selectedCategoryId}
-
                 onChange={(e) =>{
 
                   handleInputChange(e);
                   setSelectedCategoryId(e.target.value);
                 }}
+                placeholder="Enter Category"
                 required
               >
                 {categories.map((cat) => (
@@ -162,12 +144,12 @@ export default function AddProduct() {
                 type="number"
                 className="form-control rounded-0"
                 name="price"
-=
                 onChange={(e) =>{
 
                   handleInputChange(e);
                   setPrice(e.target.value);
                 }}
+                placeholder="Enter Price"
                 required
               />
 
@@ -187,11 +169,9 @@ export default function AddProduct() {
                   handleInputChange(e);
                   setLabels(e.target.value);
                 }}
+                placeholder="Enter Labels"
               />
-
           </div>
-
-
             <button
               type="submit"
               className="btn btn-primary rounded-0"
@@ -199,9 +179,7 @@ export default function AddProduct() {
             >
               Create Product
             </button>
-
         </form>
-
         </div>
       </div>
     </section>

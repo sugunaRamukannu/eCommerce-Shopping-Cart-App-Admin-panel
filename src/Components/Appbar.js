@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, NavLink } from "react-router-dom";
 import adminImg from "../img/admin.svg";
-// import AccessDenied from "./AccessDenied";
 
+//Author(s): Ramukannu Suguna, Lee Yi Cheng, Melvin
 export default function AdminNavbar({ role }) {
   const [activeLink, setActiveLink] = useState("home");
 
@@ -34,11 +34,7 @@ export default function AdminNavbar({ role }) {
     const selectedLink = e.target.closest("a");
     setActiveLink(selectedLink.dataset.page);
   }
-  // if (role !== "ADMIN") {
-  //   // return <Navigate to="/login" replace />;
-  //   return <AccessDenied />;
-  //   // window.location.href = "http://localhost:8080/";
-  // }
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-dark fixed-top">
@@ -74,15 +70,6 @@ export default function AdminNavbar({ role }) {
             className="collapse navbar-collapse flex-grow-0"
             id="navbarSupportedContent"
           >
-            {/* <form action="#" method="GET" className="d-flex w-100" role="search">
-							<select name="searchtype" className="form-select me-2 rounded-0">
-								<option value="name">Product Name</option>
-								<option value="category">Product Category</option>
-							</select>
-							<input className="form-control me-2 rounded-0" type="search" placeholder="Search Products"
-								name="keyword" required />
-							<button className="btn btn-primary rounded-0" type="submit">Search</button>
-						</form> */}
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-5 align-items-lg-center">
               <li className="nav-item">
                 <NavLink
