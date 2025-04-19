@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/auth/role", { withCredentials: true })
+      .get("/api/auth/role", { withCredentials: true })
       .then((res) => {
         const plainRole = res.data.replace("ROLE_", "");
 
@@ -35,7 +35,7 @@ function App() {
     axios
 
       .post(
-        "http://localhost:8080/api/auth/logout",
+        "/api/auth/logout",
         {},
         { withCredentials: true }
       )
@@ -52,11 +52,12 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename="/app">
 
         <AdminNavbar role={role} onLogout={handleLogout} />
         <Routes>
           <Route path="/" exact element={<Home role={role} />} />
+          <Route path="/index" element={<Home role={role} />} />
           <Route path="/admin" element={<Products role={role} />} />
           <Route path="/access-denied" element={<AccessDenied />} />
 

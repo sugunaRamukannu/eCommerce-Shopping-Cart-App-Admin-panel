@@ -13,14 +13,14 @@ export default function AdminNavbar({ role }) {
     sessionStorage.clear();
 
     // Call the Spring Boot logout endpoint
-    fetch("http://localhost:8080/logout", {
+    fetch("/logout", {
       method: "POST", // POST is commonly used for logout requests
       credentials: "include", // Include cookies (if any) for session management
     })
       .then((response) => {
         if (response.ok) {
           // Redirect to the login page after successful logout
-          window.location.href = "http://localhost:8080/";
+          window.location.href = "/";
         } else {
           console.error("Logout failed");
         }
@@ -40,7 +40,7 @@ export default function AdminNavbar({ role }) {
       <nav className="navbar navbar-expand-lg bg-dark fixed-top">
         <div className="container px-5 px-lg-0">
           <NavLink
-            to="/"
+            to="/index"
             className="navbar-brand d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none"
           >
             <svg
@@ -73,7 +73,7 @@ export default function AdminNavbar({ role }) {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-5 align-items-lg-center">
               <li className="nav-item">
                 <NavLink
-                  to="/"
+                  to="/index"
                   data-page="home"
                   onClick={handleClick}
                   className={`nav-link text-white ${
@@ -120,7 +120,7 @@ export default function AdminNavbar({ role }) {
                 <li className="nav-item">
                   <Link
                     data-page="login"
-                    to="http://localhost:8080/login"
+                    to="/login"
                     onClick={handleClick}
                     className={`nav-link text-white ${
                       activeLink === "login" ? "active-link" : ""
@@ -236,7 +236,7 @@ export default function AdminNavbar({ role }) {
             <li className="nav-item dropdown">
               <Link
                 className="nav-link dropdown-toggle"
-                to="/"
+                to="/index"
                 id="userDropdown"
                 role="button"
                 data-bs-toggle="dropdown"

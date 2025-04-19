@@ -7,9 +7,9 @@ function LogoutButton() {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:8080/logout", {}, { withCredentials: true });
+      await axios.post("/logout", {}, { withCredentials: true });
       // After successful logout, redirect to your Spring Boot app home page
-      window.location.href = "http://localhost:8080/"; // your server-side home
+      window.location.href = "/"; // your server-side home
     } catch (error) {
       console.error("Logout failed", error);
     }

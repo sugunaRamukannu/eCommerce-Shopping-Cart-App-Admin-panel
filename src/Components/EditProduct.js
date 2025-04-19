@@ -29,7 +29,7 @@ export default function EditProduct() {
     // Fetch categories using axios
     axios
 
-      .get("http://localhost:8080/api/categories") 
+      .get("/api/categories") 
 
       .then((res) => {
         console.log("Fetched categories:", res.data);
@@ -49,7 +49,7 @@ export default function EditProduct() {
 
     // Fetch product data
     axios
-      .get(`http://localhost:8080/api/products/${productId}`)
+      .get(`/api/products/${productId}`)
       .then((res) => {
         const product = res.data;
         setProductName(product.productName || "");
@@ -108,7 +108,7 @@ export default function EditProduct() {
     };
 
     axios
-      .put(`http://localhost:8080/api/products/${productId}`, updatedData)
+      .put(`/api/products/${productId}`, updatedData)
       .then(() => {
         console.log("Product updated");
         navigate("/admin");

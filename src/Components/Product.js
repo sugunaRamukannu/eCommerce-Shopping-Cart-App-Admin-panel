@@ -15,7 +15,7 @@ export default function Products({role}) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/products?page=${page}&size=${pageSize}`)
+      .get(`/api/products?page=${page}&size=${pageSize}`)
       .then((response) => {
         setProducts(response.data.content);
         setTotalPages(response.data.totalPages);
@@ -32,7 +32,7 @@ export default function Products({role}) {
   const handleDelete = async (productId) => {
     try {
       const response = await fetch(
-        `http://localhost:8080/api/products/${productId}`,
+        `/api/products/${productId}`,
         { method: "DELETE" }
       );
 

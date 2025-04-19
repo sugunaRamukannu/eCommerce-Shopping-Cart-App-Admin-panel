@@ -8,7 +8,7 @@ export default function AccessDenied() {
       <div className="text-center">
         <h1 className="display-4 text-danger">Access Denied</h1>
         <p className="lead">You do not have permission to view this page.</p>
-        <Link to="http://localhost:8080/" className="btn btn-primary mt-3 rounded-0">
+        <Link to="/" className="btn btn-primary mt-3 rounded-0">
           Go to Home
         </Link>
       </div>
