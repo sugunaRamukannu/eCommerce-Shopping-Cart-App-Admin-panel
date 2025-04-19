@@ -8,6 +8,9 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+import AccessDenied from "./Components/AccessDenied";
+
+
 function App() {
   const [role, setRole] = useState("");
   const [loading, setLoading] = useState(true);
@@ -17,23 +20,46 @@ function App() {
       .get("http://localhost:8080/api/auth/role", { withCredentials: true })
       .then((res) => {
         const plainRole = res.data.replace("ROLE_", "");
-        setRole(plainRole); // e.g., "ADMIN" or "USER"
+
+        setRole(plainRole);
       })
       .catch(() => {
-        setRole(""); // If not logged in or error
+        setRole("");
+
       })
       .finally(() => setLoading(false));
   }, []);
+
+
+  const handleLogout = () => {
+    axios
+
+      .post(
+        "http://localhost:8080/api/auth/logout",
+        {},
+        { withCredentials: true }
+      )
+
+      .then(() => {
+        setRole("");
+      })
+
+      .catch((err) => console.error("Logout failed:", err));
+  };
+
 
   if (loading) return <div>Loading...</div>;
 
   return (
     <div className="App">
       <BrowserRouter>
-        <AdminNavbar role={role} />
+
+        <AdminNavbar role={role} onLogout={handleLogout} />
         <Routes>
-          <Route path="/" exact element={<Home /> } />
-          <Route path="/admin" element={<Products />} />
+          <Route path="/" exact element={<Home role={role} />} />
+          <Route path="/admin" element={<Products role={role} />} />
+          <Route path="/access-denied" element={<AccessDenied />} />
+
           {/* <Route path="/products" element={<Products />} /> */}
 
           {/* Admin-only routes */}

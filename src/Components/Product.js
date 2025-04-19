@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import AccessDenied from "./AccessDenied";
 
-export default function Products() {
+export default function Products({role}) {
+
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(0); // current page index
   const [totalPages, setTotalPages] = useState(0); // total pages
@@ -42,6 +44,13 @@ export default function Products() {
       console.error("Delete error:", error.message);
     }
   };
+
+
+  if (role !== "ADMIN") {
+    // return <Navigate to="/login" replace />;
+    return <AccessDenied />;
+    // window.location.href = "http://localhost:8080/";
+  }
 
   return (
     <section className="py-5">

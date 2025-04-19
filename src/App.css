@@ -1,23 +1,24 @@
 body {
-    background: linear-gradient(170deg, #a2e436, #a2e436 50%, #fff 50%, #fff 85%, #a2e436 85%);
-	background-repeat: no-repeat;
-	min-height: 100vh;
+
+  background: linear-gradient(170deg, #a2e436, #a2e436 50%, #fff 50%, #fff 85%, #a2e436 85%);
+background-repeat: no-repeat;
 }
 
 .product-dashboard > img {
-	width: 90%;
+width: 90%;
 }
 
 .active-link > svg {
-  fill: #a2e436;
+fill: #a2e436;
 }
 
 .active-link > span {
-  color: #a2e436;
+color: #a2e436;
 }
 
 .profile {
-	border-radius: 50%;
-	border: 5px solid #a2e436;
-	background-color: white;
+border-radius: 50%;
+border: 5px solid #a2e436;
+background-color: white;
+
 }

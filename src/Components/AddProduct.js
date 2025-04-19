@@ -46,13 +46,16 @@ export default function AddProduct() {
     //error validation
     const input = e.target;
     if (input.value.length === 0) {
-      setFormErrors(errors => ({
+
+      setFormErrors((errors) => ({
         ...errors,
         //targeting the label which is the previous sibling of input
         [input.name]: `Please enter the ${input.previousSibling.innerText.toLowerCase()}`,
       }));
     } else {
+
       setFormErrors(errors => ({...errors,
+
         //clear the respective error if there is an input
         [input.name]: "",
       }));
@@ -106,29 +109,37 @@ export default function AddProduct() {
       <div className="container mt-5">
         <h1 className="mb-4 fw-bold">Add New Product</h1>
         <div className="border border-black bg-white p-5">
-        <form>
-          <div className="mb-3">
-            <label className="form-label">Product Name</label>
+
+          <form>
+            <div className="mb-3">
+              <label className="form-label">Product Name</label>
+
               <input
                 type="text"
                 className="form-control rounded-0"
                 name="productName"
+
                 onChange={(e) =>{
+
                   handleInputChange(e);
                   setProductName(e.target.value);
                 }}
                 required
               />
+
                {formErrors.productName && <span className="text-danger d-inline-block mt-2">{formErrors.productName}</span>}
           </div>
 
           <div className="mb-3">
             <label className="form-label">Category</label>
+
               <select
                 className="form-control rounded-0"
                 name="selectedCategoryId"
                 value={selectedCategoryId}
+
                 onChange={(e) =>{
+
                   handleInputChange(e);
                   setSelectedCategoryId(e.target.value);
                 }}
@@ -140,36 +151,46 @@ export default function AddProduct() {
                   </option>
                 ))}
               </select>
+
               {formErrors.selectedCategoryId && <span className="text-danger d-inline-block mt-2">{formErrors.selectedCategoryId}</span>}
           </div>
 
           <div className="mb-3">
             <label className="form-label">Price</label>
+
               <input
                 type="number"
                 className="form-control rounded-0"
                 name="price"
+=
                 onChange={(e) =>{
+
                   handleInputChange(e);
                   setPrice(e.target.value);
                 }}
                 required
               />
+
               {formErrors.price && <span className="text-danger d-inline-block mt-2">{formErrors.price}</span>}
           </div>
 
           <div className="mb-3">
             <label className="form-label">Label</label>
+
               <input
                 type="text"
                 className="form-control rounded-0"
                 name="labels"
+
                 onChange={(e) =>{
+
                   handleInputChange(e);
                   setLabels(e.target.value);
                 }}
               />
+
           </div>
+
 
             <button
               type="submit"
@@ -178,7 +199,9 @@ export default function AddProduct() {
             >
               Create Product
             </button>
+
         </form>
+
         </div>
       </div>
     </section>
