@@ -62,6 +62,30 @@ export default function AddProduct() {
   function handleCreateClick(e) {
     e.preventDefault();
 
+     // Track validation errors
+    const errors = {};
+
+    if (!productName.trim()) {
+      errors.productName = "Please enter the product name";
+    }
+
+    if (!selectedCategoryId) {
+      errors.selectedCategoryId = "Please select a category";
+    }
+
+    if (!price || Number(price) <= 0) {
+      errors.price = "Please enter a valid price";
+    }
+
+    // Set errors
+    setFormErrors(errors);
+
+    // If there are any errors, show an alert and return
+    if (Object.keys(errors).length > 0) {
+      alert("Please fill up all mandatory form fields before submission.");
+      return;
+    }
+
     const selectedCategory = categories.find(
       (cat) => cat.categoryId.toString() === selectedCategoryId.toString()
     );

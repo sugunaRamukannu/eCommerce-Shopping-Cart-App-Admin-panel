@@ -90,13 +90,25 @@ export default function EditProduct() {
   const handleUpdate = (e) => {
     e.preventDefault();
 
-    let formErrorsCount = 0;
-    for (const key in formErrors) {
-      if (formErrors[key]) formErrorsCount++;
+    // Track validation errors
+  const errors = {};
+
+    if (!productName.trim()) {
+      errors.productName = "Please enter the product name";
     }
 
-    if (formErrorsCount > 0) return alert("Please fill up all mandatory form fields before submission.");
+    if (!price || Number(price) <= 0) {
+      errors.price = "Please enter a valid price";
+    }
 
+    // Set errors
+    setFormErrors(errors);
+
+    // If there are any errors, show an alert and return
+    if (Object.keys(errors).length > 0) {
+      alert("Please fill up all mandatory form fields before submission.");
+      return;
+    }
 
     const updatedData = {
       productName,
