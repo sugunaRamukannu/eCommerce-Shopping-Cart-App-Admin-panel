@@ -26,7 +26,7 @@ export default function AddProduct() {
   // Fetch categories on mount
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/categories")
+      .get("/api/categories")
       .then((response) => {
         setCategories(response.data);
         console.log("API Response:", response.data);
@@ -75,7 +75,7 @@ export default function AddProduct() {
     };
 
     axios
-      .post("http://localhost:8080/api/products", data)
+      .post("/api/products", data)
       .then((response) => {
         console.log("Sending data:", JSON.stringify(data, null, 2));
         console.log("Product created:", response.data);
