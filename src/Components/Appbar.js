@@ -70,7 +70,10 @@ export default function AdminNavbar({ role }) {
             className="collapse navbar-collapse flex-grow-0"
             id="navbarSupportedContent"
           >
+            {role === "ADMIN" && (
+                <>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-5 align-items-lg-center">
+            
               <li className="nav-item">
                 <NavLink
                   to="/index"
@@ -94,7 +97,8 @@ export default function AdminNavbar({ role }) {
                   <span>Home</span>
                 </NavLink>
               </li>
-              <li className="nav-item">
+              
+                <li className="nav-item">
                 <NavLink
                   to="/admin"
                   data-page="products"
@@ -116,35 +120,7 @@ export default function AdminNavbar({ role }) {
                   <span>Products</span>
                 </NavLink>
               </li>
-              {role !== "ADMIN" ? (
-                <li className="nav-item">
-                  <Link
-                    data-page="login"
-                    to="/login"
-                    onClick={handleClick}
-                    className={`nav-link text-white ${
-                      activeLink === "login" ? "active-link" : ""
-                    }`}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="25"
-                      height="25"
-                      fill="currentColor"
-                      className="bi bi-person-circle d-lg-block mx-auto"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                      <path
-                        fillRule="evenodd"
-                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
-                      />
-                    </svg>
-                    <span>Login</span>
-                  </Link>
-                </li>
-              ) : (
-                <li
+              <li
                   className="nav-item dropdown"
                   data-bs-toggle="collapse"
                   to="#collapseExample"
@@ -198,8 +174,9 @@ export default function AdminNavbar({ role }) {
                     </li>
                   </ul>
                 </li>
-              )}
             </ul>
+            </>
+            )}
           </div>
         </div>
       </nav>
